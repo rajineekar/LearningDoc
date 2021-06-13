@@ -104,6 +104,10 @@ t2.join()
 
 FILES:
 f=open('filename','r')
-
+to read the data fom file :f.readline()
 
 if we want to access the global veriables:globals()['varName'] =
+
+
+
+
