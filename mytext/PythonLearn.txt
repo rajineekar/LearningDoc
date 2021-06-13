@@ -1,0 +1,109 @@
+for mathametical operation: "+","-","*","/","%"........
+When we are doing devision python will give floting. if we want only int we need to use://
+exp:5 / 2 = 2.5 ---> 5 // 2 = 2
+if want power of value then use value ** value
+exp: 2 * 2 * 2 = 8 ---> 2 **3 = 8
+if want to print RAW string use r   exp:print(r'your string')
+"_" represent the  previous operation result
+In string, when we are using array subscript 0 indicate array[0] and subscript -1 indicate last byte in the array
+ exp: YOUTUBE....... array[0] indicate 'Y' and array[-1] indicate 'E' and array[1:4] indicate 'OUT' array[1:] indicate 'OUTUBE'
+ for list use [], for set {} tuple ()
+ to get the address use id function exp:id(varName)
+ Data Types: None,Numeric,List,Tuple,Set,String,Rang,Dictionary..
+ Numeric: int,float,complex,bool
+ Type of a variable we can get bye type(variable)
+ by using range function we can genarate the random values... range(start,max,device)
+ exp:range(2,10,2) =[2,4,6,8]
+ Logical operation:and or not
+ bin(value)---> convert the decimal to binary.... oct(deciamlvalue),hex(deciamlvalue)
+ logical operator:~,&,|,^,
+ if we want to use mathametical function use to import the math lib exp:import math as YourName(your wish) then math.sqrt(25)
+ if you want to import specific function from mathsthe use :from math import sqrt,pow then no need to use math.sqrt
+ when we are taking input from console i gives the string. so need to convert the data.
+ eval is used to covert the string expression  and return the result
+ if want to accept the command linne arguments use :import sys then sys.argv[0]
+ if else: if conditon:
+                XXXXXXXXXXXXXXXXXXX
+          else:
+                XXXXXXXXXXXxxxx
+  else if ladder : if condition:  elif conditon: elif conditon: else end
+in if conditon nothing is there then use "pass"
+  If we want to print data in same line in print the use end=" " exp:print("hellow",end=" ")
+
+  whie loop:
+        while condition:
+          intendation is mandatory.
+  For loop:
+   for i in x:
+
+
+python will support oops concepts
+
+	every class have the objects(functions) and methods.
+    exp:
+	class Student:
+    school = 'madhuri'
+		  def __init__(self,param if req):
+			     self.param = param if req
+
+      def avg(self):
+          function do it
+
+      @classmethod
+      def scholname(cls):
+          return cls.school
+      @staticmethod
+      def info():
+          print("data write")
+
+INHERITANCE
+ follows th MRO:method resolution order
+
+ class A:
+    def __init__(self):
+        print("in A")
+    def feature1(self):
+        print("feature1")
+
+  class B(A)
+      def __init__(self):
+          super.__init__()
+          print("In B")
+      def feature2(self):
+          print("Feature2")
+
+
+POLYMORFISAM:
+ DUCKTYPE
+
+ try
+     command
+except Exception as e:
+  print("error",e)
+finally:
+  print("hhhhhh")
+
+
+multithredding concepts:
+
+class Hello(Thread):
+  def run(self):
+      your functions
+
+class HI(Thread):
+  def run(self):
+      your functions
+  t1=Hello()
+  t2=HI()
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+
+FILES:
+f=open('filename','r')
+
+
+if we want to access the global veriables:globals()['varName'] =

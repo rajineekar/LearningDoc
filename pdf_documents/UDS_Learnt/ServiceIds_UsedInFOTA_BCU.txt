@@ -1,0 +1,147 @@
+Service ID and Sub Functions
+
+31(RoutineControl)	01(single)(00-ISOSAEReserved,01-startRoutine,02-stopRoutine,03-requestRoutineResults,04-7F - ISOSAEReserved)	
+Rx 1 0x18DA21F1 x 8 04 31 01 F5 18 00 00 00    (F500 – F5FF ->OBDDataIdentifier)	
+
+
+10(DiagnosticSessionControl)	01  (00-ISOSAEReserved,01-defaultSession,02-programmingSession,03-extendedDiagnosticSession,04-safetySystemDiagnosticSession,05-3F - ISOSAEReserved,40-5F - vehicleManufacturerSpecific,60-7E - systemSupplierSpecific,7F - ISOSAEReserved)
+ Rx 1 0x18DA21F1 x 8 02 10 01 00 00 00 00 00
+ Rx 1 0x18DAF121 x 8 06 50 01 00 0A 01 F4 92 
+ 
+
+10(DiagnosticSessionControl)	03 (00-ISOSAEReserved,01-defaultSession,02-programmingSession,03-extendedDiagnosticSession,04-safetySystemDiagnosticSession,05-3F - ISOSAEReserved,40-5F - vehicleManufacturerSpecific,60-7E - systemSupplierSpecific,7F - ISOSAEReserved)
+Rx 1 0x18DA21F1 x 8 02 10 03 00 00 00 00 00 
+Rx 1 0x18DAF121 x 8 06 50 03 00 0A 01 F4 92
+
+31(RoutineControl)	01 (00-ISOSAEReserved,01-startRoutine,02-stopRoutine,03-requestRoutineResults,04-7F - ISOSAEReserved)		
+Rx 1 0x18DA21F1 x 8 04 31 01 02 03 00 00 00 (0100 - EFFF ->vehicleManufacturerSpecific)
+Rx 1 0x18DAF121 x 8 04 71 01 02 03 01 F4 92
+
+
+85(ControlDTCSetting)	02 (00-ISOSAEReserved,01- on,02- 0ff,03-3F - ISOSAEReserved,40-5F - vehicleManufacturerSpecific,60-7E - systemSupplierSpecific,7F - ISOSAEReserved)
+Rx 1 0x18DA21F1 x 8 05 85 02 FF FF FF 00 00 
+Rx 1 0x18DAF121 x 8 02 C5 02 02 03 01 F4 92
+
+
+28(CommunicationControl) 01 (00- enableRxAndTx,01- enableRxAndDisableTx,02-disableRxAndEnableTx,03-disableRxAndTx,04-3F -ISOSAEReserved,40-5F - vehicleManufacturerSpecific,60-7E - systemSupplierSpecific,7F - ISOSAEReserved)
+Rx 1 0x18DA21F1 x 8 03 28 01 01 00 00 00 00 
+Rx 1 0x18DAF121 x 8 02 68 01 02 03 01 F4 92
+
+
+10 (DiagnosticSessionControl)	02(00-ISOSAEReserved,01-defaultSession,02-programmingSession,03-extendedDiagnosticSession,04-safetySystemDiagnosticSession,05-3F - ISOSAEReserved,40-5F - vehicleManufacturerSpecific,60-7E - systemSupplierSpecific,7F - ISOSAEReserved)
+ Rx 1 0x18DA21F1 x 8 02 10 02 00 00 00 00 00 
+ Rx 1 0x18DAF121 x 8 03 7F 10 78 00 00 00 00 
+ Rx 1 0x18DAF121 x 8 06 50 02 00 0A 01 F4 00 
+
+
+27 (SecurityAccess)   11 ((Security Level) (00-ISOSAEReserved,01-requestSeed,02-sendKey,03-05-07..41-requestSeed,04-06-08..42-sendKey,43-5D -ISOSAEReserved requestSeed values,44-5E - ISOSAEReserved sendKey values,5F -requestSeed value,44-60 - sendKey value,61-7E - systemSupplierSpecific,7F - ISOSAEReserved)
+Rx 1 0x18DA21F1 x 8 02 27 11 00 00 00 00 00 
+Rx 1 0x18DAF121 x 8 06 67 11 E1 E6 95 13 00 
+
+
+27 (SecurityAccess)		12 (Security Level + 1)
+Rx 1 0x18DA21F1 x 8 06 27 12 1E 19 6A EC 00 
+Rx 1 0x18DAF121 x 8 03 7F 27 78 00 00 00 00 
+Rx 1 0x18DAF121 x 8 02 67 12 78 00 00 00 00 
+
+
+2E (WriteDataByIdentifier)		F1 5A .....(Identifier)(F100 - F17F -->identificationOptionVehicleManufacturerSpecificDataIdentifier)
+Rx 1 0x18DA21F1 x 8 10 0C 2E F1 5A 02 04 16 
+Rx 1 0x18DAF121 x 8 30 00 00 00 00 00 00 00 
+Rx 1 0x18DA21F1 x 8 21 01 02 03 04 05 06 00 
+Rx 1 0x18DAF121 x 8 03 6E F1 5A 00 00 00 00
+
+34 (RequestDownload)			multipacket(Sends the address and length format with start address adn length of the data)
+Rx 1 0x18DA21F1 x 8 10 0B 34 00 44 00 00 00 ->(00:HighNibble->Compression method ,lownibble->Encryption method) (44:HighNibble->Length of memory size parameter,lownibble->length of Memory address parameter)
+Rx 1 0x18DAF121 x 8 30 00 00 00 00 00 00 00 
+Rx 1 0x18DA21F1 x 8 21 00 00 00 07 A2 00 00 
+Rx 1 0x18DAF121 x 8 04 74 20 04 E2 00 00 00 
+
+36 (TransferData)		
+Rx 1 0x18DA21F1 x 8 14 E2 36 01 00 00 04 12 -->01:block sequence counter.
+Rx 1 0x18DAF121 x 8 30 00 00 00 00 00 00 00 
+Rx 1 0x18DA21F1 x 8 21 02 EA 02 E3 03 22 02 
+Rx 1 0x18DA21F1 x 8 22 B4 6C AD B7 45 ED E0 ------
+
+resp:Rx 1 0x18DAF121 x 8 02 76 01 00 00 00 00 00 
+
+37 (RequestTransferExit)
+Rx 1 0x18DA21F1 x 8 01 37 00 00 00 00 00 00 
+Rx 1 0x18DAF121 x 8 01 77 02 00 00 00 00 00 
+
+31 (RoutineControl)		01 		multipacket(0x202,CRC check routine,with Calculated check sum)
+Rx 1 0x18DA21F1 x 8 10 08 31 01 02 02 39 90 
+Rx 1 0x18DAF121 x 8 30 00 00 00 00 00 00 00 
+Rx 1 0x18DA21F1 x 8 21 40 72 00 00 00 00 00 
+Rx 1 0x18DAF121 x 8 03 7F 31 78 00 00 00 00 
+Rx 1 0x18DAF121 x 8 05 71 01 02 02 00 00 00 
+
+31 (RoutineControl)		01 	multipacket(0xff00 erase memory routine,next start address and size with 0x44 service id)	multipacket
+Rx 1 0x18DA21F1 x 8 10 0D 31 01 FF 00 44 00 
+Rx 1 0x18DAF121 x 8 30 00 00 00 00 00 00 00 
+Rx 1 0x18DA21F1 x 8 21 7D 80 00 00 02 00 00 
+Rx 1 0x18DAF121 x 8 03 7F 31 78 00 00 00 00 
+Rx 1 0x18DAF121 x 8 03 7F 31 78 00 00 00 00 
+Rx 1 0x18DAF121 x 8 05 71 01 FF 00 00 00 00 
+
+
+34 (RequestDownload)			multipacket	
+Rx 1 0x18DA21F1 x 8 10 0B 34 00 44 00 7D 80 ->(00:HighNibble->Compression method ,lownibble->Encryption method) (44:HighNibble->Length of memory size parameter,lownibble->length of Memory address parameter)
+Rx 1 0x18DAF121 x 8 30 00 00 00 00 00 00 00 
+Rx 1 0x18DA21F1 x 8 21 00 00 02 00 00 00 00 
+Rx 1 0x18DAF121 x 8 04 74 20 04 E2 00 00 00
+
+	
+36 (TransferData)				multipacket	(max Count 0x6A Packets)	
+Rx 1 0x18DA21F1 x 8 14 E2 36 01 1B F1 9C 3B -->01:block sequence counter.
+Rx 1 0x18DAF121 x 8 30 00 00 00 00 00 00 00 
+Rx 1 0x18DA21F1 x 8 21 1B F1 E7 E6 F0 96 18 
+Rx 1 0x18DA21F1 x 8 22 27 0C 14 EE F0 82 E6 
+Rx 1 0x18DA21F1 x 8 23 E0 D3 26 0E B7 54 4A 
+Rx 1 0x18DA21F1 x 8 24 BA 4D F7 C6 01 EE F0 
+
+
+37 (RequestTransferExit)
+Rx 1 0x18DA21F1 x 8 01 37 00 00 00 00 00 00 
+Rx 1 0x18DAF121 x 8 01 77 6A 78 00 00 00 00 
+
+	
+31 (RoutineControl)		01
+Rx 1 0x18DA21F1 x 8 10 08 31 01 02 02 75 A4 
+Rx 1 0x18DAF121 x 8 30 00 00 00 00 00 00 00 
+Rx 1 0x18DA21F1 x 8 21 E3 80 00 00 00 00 00 
+Rx 1 0x18DAF121 x 8 03 7F 31 78 00 00 00 00 
+Rx 1 0x18DAF121 x 8 05 71 01 02 02 00 00 00 
+
+Rx 1 0x18DA21F1 x 8 04 31 01 FF 01 00 00 00 -->(FF00 - FFFF ->ISOSAEReserved)
+Rx 1 0x18DAF121 x 8 05 71 01 FF 01 00 00 00 
+
+11(ECUReset)					01 (00-ISOSAEReserved,01-hardReset,02-keyOffOnReset,03-softReset,04-enableRapidPowerShutDown,05-disableRapidPowerShutDown,06-3F - ISOSAEReserved, 40-5F - vehicleManufacturerSpecific,60-7E - systemSupplierSpecific,7F-ISOSAEReserved)
+Rx 1 0x18DA21F1 x 8 02 11 01 00 00 00 00 00 
+Rx 1 0x18DAF121 x 8 02 51 01 FF 01 00 00 00							
+							
+							
+TesterPresent (3E hex) service
+AccessTimingParameter (83 hex) service   (00-ISOSAEReserved,01-readExtendedTimingParameterSet,02-setTimingParametersToDefaultValues,03- readCurrentlyActiveTimingParameters,04- setTimingParametersToGivenValues
+											05-FF - ISOSAEReserved)
+LinkControl (87 hex) service	         (00-ISOSAEReserved,01- verifyBaudrateTransitionWithFixedBaudrate,02- verifyBaudrateTransitionWithSpecificBaudrate,03- transitionBaudrate)										
+ReadDataByIdentifier (22 hex) service
+ReadMemoryByAddress (23 hex) service
+ReadScalingDataByIdentifier (24 hex) service
+ReadDataByPeriodicIdentifier (2A hex) service
+DynamicallyDefineDataIdentifier (2C hex) service (00-ISOSAEReserved,01- defineByIdentifier,02- defineByMemoryAddress,03- clearDynamicallyDefinedDataIdentifier,04-7F -ISOSAEReserved)
+WriteMemoryByAddress (3D hex) service
+ClearDiagnosticInformation (14 hex) service
+ReadDTCInformation (19 hex) service		(00-ISOSAEReserved,01-reportNumberOfDTCByStatusMask,02-reportDTCByStatusMask,03-reportDTCSnapshotIdentification,04-reportDTCSnapshotRecordByDTCNumber,
+										 05- reportDTCSnapshotRecordByRecordNumber,06-reportDTCExtendedDataRecordByDTCNumber,07- reportNumberOfDTCBySeverityMaskRecord,08-reportDTCBySeverityMaskRecord,
+										 09-reportSeverityInformationOfDTC,0A-reportSupportedDTC,0B-reportFirstTestFailedDTC,0C-reportFirstConfirmedDTC,
+										 0D-reportMostRecentTestFailedDTC,0E-reportMostRecentConfirmedDTC,0F-reportMirrorMemoryDTCByStatusMask,10-reportMirrorMemoryDTCExtendedDataRecordByDTCNumber,
+										 11-reportNumberOfMirrorMemoryDTCByStatusMask,12-reportNumberOfEmissionsRelatedOBDDTCByStatusMask,13-reportEmissionsRelatedOBDDTCByStatusMask,14-reportDTCFaultDetectionCounter,
+										 15-reportDTCWithPermanentStatus,16-7F - ISOSAEReserved)
+
+InputOutputControlByIdentifier (2F hex) service										 
+RequestUpload (35 hex) service
+
+
+
+

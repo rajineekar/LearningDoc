@@ -1,0 +1,109 @@
+XML Learning
+
+DTD: Documented type Defination 
+1.Internal DTD:
+		Syntax:<!DOCTYPE root [element declaration]>
+		Example:
+		<!DOCTYPE Note [
+		<!ELEMENT Note(TO,From,MobileNo,Text)>
+		<!ELEMENT To(#PCDATA)>   <!--PCDATA means Parsed charecter DATA -->
+		<!ELEMENT From(#PCDATA)>   <!--PCDATA means Parsed charecter DATA -->
+		<!ELEMENT MobileNo(#PCDATA)>   <!--PCDATA means Parsed charecter DATA -->
+		<!ELEMENT Text(#PCDATA)>   <!--PCDATA means Parsed charecter DATA -->
+		]>
+
+		<Note>
+			<TO>tome</TO>
+			<From>towho</From>
+			<MobileNo>123456789</MobileNo>
+			<Text>goodnight</Text>
+		</Note>
+
+2.External DTD:
+			
+			Syntax:<!DOCTYPE root SYSTEM "filename.dtd">
+			
+			Heare we need to follow 2 files one should have the declaration
+	
+ exp:
+ first file 1.xml									Second file 2.xml
+	<!DOCTYPE root SYSTEM "filename.dtd">
+	 	<Note>
+			<TO>tome</TO>							<!ELEMENT Note(TO,From,MobileNo,Text)>			
+													<!ELEMENT To(#PCDATA)>   <!--PCDATA means Parsed charecter DATA -->
+			<From>towho</From>						<!ELEMENT From(#PCDATA)>   <!--PCDATA means Parsed charecter DATA-->																				
+			<MobileNo>123456789</MobileNo>			<!ELEMENT MobileNo(#PCDATA)> <!--PCDATA means Parsed charecter DATA -->																				
+			<Text>goodnight</Text>					<!ELEMENT Text(#PCDATA)>   <!--PCDATA means Parsed charecter DATA -->																					
+		</Note>		
+
+DTD Elements:
+	+ --> 1 or more occurence of child elements
+	* --> 0 or more occurence of child elements
+	? --> 0 or 1 occurence of child elements
+	no symbol --> 1  occurence of child elements
+
+DTD Attributes:
+	Syntax :<!ATTLIST elementname attributename attributeType value>
+	
+	attributeType:
+			CDATA: Charecter data
+	value:
+	#REQUIRED  -->Compulsary Require data
+	#IMPLIED   --> Optional
+	#FIXED Value --> value is fixed
+	
+	Exp:<mobile number="123456789"/>
+	In DTD:<!ATTLIST mobile number CDATA #REQUIRED>
+
+Entity Reference:	
+Synatx :&name;
+exp: 	<   &lt;
+		>  	&gt;
+		&	&amp;
+		'	&apos;
+		"	&quot;
+		1/4	&frac14
+		@	&copy;
+		
+XML schema: We can validate the xml Document by using XML Schema (also known as XML schema defination  .xsd)	
+
+xml schema elements: 1.Simple type  exp: <from>Ramu<from>
+					 2.Complex type syntax: <xs:element name="xxx" type="yyyy"/>
+						type :Integer,strings,date,time,bollean exp:<xs:element name="from" type="strings"/>
+						
+student.xml
+<?xml version="1.0"?>
+<student>
+	<rno>72</rno>
+	<name>Test</name>
+	<avg>92.7</avg>
+	<dob>10-01-1992<dob>
+	<time>03:04:33<time>
+	<mobile no="123456"/>
+	<distinction>Yes<distinction>	
+<student>
+					
+student.xsd
+<?xml version="1.0"?> <!-- declaration -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"><!-- xmlns maes xml name spaces -->
+	<xs:element name="student">
+		<xs:complexType>
+		  <xs:sequnce>
+		     <xs:element name="rno" type="xs:integer"/>
+			 <xs:element name="name" type="xs:string"/>
+			 <xs:element name="avg" type="xs:double"/>
+			 <xs:element name="dob" type="xs:date"/>
+			 <xs:element name="time" type="xs:time"/>
+			 <xs:element name="mobile">
+				<xs:complexType>
+				   <xs:attribute name="no" type="int"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="distinction" type="xs:time"/>
+		  </xs:sequnce>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+
+						
+	

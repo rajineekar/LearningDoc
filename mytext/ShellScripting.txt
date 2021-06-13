@@ -1,0 +1,157 @@
+variables:
+$# - number of variables passed to sh file.
+$@ - Total parameter values
+$* - Total parameters in string formate.
+$1 - first parameter value ($0- file name)
+
+INTEGER COMPARISION
+
+ -eq    -----> is equal to  --- if ["$a" -eq "$b"]
+ -ne    -----> is not equal to --- if ["$a" -ne "$b"]
+ -gt    -----> is greated than --- if ["$a" -gt "$b"]
+ -ge    -----> is greater than or equal --- if ["$a" -ge "$b"]
+ -lt    -----> is lessthan  --- if ["$a" -lt "$b"]
+ -le    -----> is less than or equal to  --- if ["$a" -le "$b"]
+  <     -----> is less than ---  (("$a" < "$b"))
+  <=     -----> is less than or equal tp ---  (("$a" <= "$b"))
+  >     -----> is greater than ---  (("$a" > "$b"))
+  <=     -----> is greater than or equal ---  (("$a" >= "$b"))
+
+
+  STRING COMPARISION
+
+  =    ------> is equal to  - if [ "$a" = "$b"]
+  ==    ------> is equal to  - if [ "$a" == "$b"]
+  !=    ------> is not equal to  - if [ "$a" != "$b"]
+  <    ------> is less than, in ASCII alphabetical order  - if [ "$a" < "$b"]
+  >    ------> is greater than, in ASCII alphabetical order  - if [ "$a" > "$b"]
+  -z    ------> string is null, that is, has zero length
+
+
+  in echo -e is pointing to the show the same line
+   echo -e "strinng : \c"
+
+FOR FILE CHECKING
+   for testing the file :
+   -e --- existinng the file or not
+   -f --- existing the valid file or not
+   -d --- existing the dir or not
+   -b --- block special file is there or not (image or video)
+   -c --- existing the charecter special file or not
+   -s --- file is empty or not
+   -w -- to check the write permissions
+   -x -- to check the executable permissions
+
+LOGICAL OPERATION
+
+ && or -a for and operations   [logic] && [ logic] or [logic -a logic] or [[logic && logic]]
+ || or -o for OR operations
+
+ ARITHMETIC operations
+ +  adition operation (( num1 + num2 )) or (expr $num1 + $num2 )
+ -  adition operation (( num1 - num2 )) or (expr $num1 - $num2 )
+ *  adition operation (( num1 * num2 )) or (expr $num1 \* $num2 )
+ /  adition operation (( num1 / num2 )) or (expr $num1 / $num2 )
+ %  adition operation (( num1 % num2 )) or (expr $num1 % $num2 )
+ for floting points | bc need to use  echo "num1 + num2" | bc
+ for match lib echo "scale=2;sqrt($num2)" | bc -l  (-l means include the maths lib)
+
+ switch LOGIC
+
+ case expression in
+      pattern1 )
+              statements ;;
+      pattern2 )
+              statements ;;
+
+ esac
+
+ WHILE LOGIC
+  while [ condition ]
+  do
+     statements
+     statements
+     statements
+  done
+
+
+  UNTIL LOOP
+
+  until [ condition ]
+  do
+      statements
+      statements
+      statements
+ done
+
+ SELECT LOOP
+
+ select <name> in <list>
+ do
+      command1
+      command2
+ done
+
+ FUNCTION NOTATION
+
+ function name(){
+ command1
+ }
+
+ or
+
+  name () {
+ command1
+ }
+FOR LOCAL VERIABLE
+
+local VAR
+
+TERNARY VERIABLE
+In C :  ? if true : if false
+in Sh  : [[ condition]] && if false || if true
+
+FOR READONLY
+
+readonly var readonly -p  for variable readonly -f for functions
+
+TRAP
+
+trap "print what ever you want" signum exp: trap "echo hellow" 0   (SIGKILL and SIGSTOP can't be catchable)
+
+TO DEBUG THE SCRIPTS
+
+bash -x file.sh
+or in file #! /bin/bash +x
+or in file  set -x and set +x
+
+MULTILINE COMMENTS
+
+: ' Commeneted Lines all '
+
+DOCK DELIMETER
+ We can print the commented code or any thing insted of echo
+cat << TEXT
+write what ever you want
+TEXT
+
+
+REDIRECT OPERATOR
+
+ >&  is used to Standrd output and error Write into redirected to file  exp: ls -al >& text.txt (write the output data of ls -al to text.txt)
+
+READING THE STDIN AND PRINTING
+
+while read line
+do
+    echo "$line"
+done < "{1:-/dev/stdin}"
+
+
+CONVERT THE FIRST LETTER TO CAPITEL
+  ^l    exp:  echo ${str1^l}
+
+CONVERT THE LOWER CASE CHARECTER
+ ^   exp: echo ${st1^}
+ CONVERT THE UPPER CASE CHARECTER
+  ^^   exp: echo ${st1^^}

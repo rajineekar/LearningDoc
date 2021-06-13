@@ -1,0 +1,8 @@
+I,we,YOU,They --- HAVE
+HE,SHE,IT --- HAS
+HAVE/HAS/HAD +V3 ---
+I,WE,YOU,THEY ----DO
+HE,SHE,IT ---- does
+
+I,WE,YOU,THEY --- SHALL
+HE,SHE,IT---- WILL

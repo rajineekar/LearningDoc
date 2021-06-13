@@ -1,0 +1,52 @@
+Message encryption
+Message->PrivateKey_A->Public Key_B -- CipherText -- ->PrivateKey_B ->PublicKey_A->Message
+
+Message Authenication Code:(MAC)(C(M,K)= MAC)
+
+Message           ---------------------------------->|->Message+MAC (opt Enc With K2)-- CipherText --(opt Dec K2) Calculated MAC at ClientSide And compare.
+Message->CipherText->EncryptWithKey(K1)->(Called MAC)|
+
+HASH FUNCTION(H(M)=h)
+Message----------------->|-->Message+Hash ---CipherText
+Message->Hash->Enc(K1Pri)|
+
+Message----------------->|-->Message+Hash->(ENC Key)---CipherText
+Message->Hash->Enc(K1Pri)|
+
+SECURE HASH ALGORITHAM(SHA)
+O/P -- 128 Bit -- SHA1
+       256 Bit -- SHA256
+       512 Bit -- SHA512
+
+       PlainText Block SIze =1024bits
+       No.of Rounds/Steps=80
+       Each Round->Qword(Generated from plain Text)=64bits
+       Each round ->constant K
+       Buffers=8 buffers(*Store Intermediate result *store o/p(hash code))
+       each buffer size =64 bit
+
+Encrypt :Me mod n =C
+decrypt: Cd mod n =m
+
+CHECKSUMS:
+MD5,CRC32,SHA-1,SHA-512,MD2,RipeMD128,Adler32,Tiger
+
+Algorithm mode:
+1.Electronic Code Book(ECB)
+2.Cipher Block Chaining(CBC)
+3.Cipher Feedback(CFC)
+4.Output Feedback(OFB)
+5.Counter mode (CTR)
+
+Electronic Code Book(ECB)
+  Block size is 64
+  Plain Text->Encrypt with key->Cipher text.
+Cipher Block Chaining(CBC)
+  plain text->XOR with data(I.V)->EncryptWithKey ->cipher text >> this cipher text
+  give to the next data XOR data.
+
+ KERBEROS:
+ client -> Authenication server->DB
+        <-Token <- Client Pass <-DB
+        ->SERVER req Token
+        <-Server acceptance.
